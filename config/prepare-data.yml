@@ -1,0 +1,29 @@
+$schema: https://azuremlschemas.azureedge.net/latest/commandComponent.schema.json
+name: split_data
+display_name: Split Data
+version: 1
+type: command
+inputs:
+  input_data:
+    type: uri_folder
+outputs:
+  output_data_x_train:
+    type: uri_folder
+  output_data_x_test:
+    type: uri_folder
+  output_data_y_train:
+    type: uri_folder
+  output_data_y_test:
+    type: uri_folder
+    
+code: ../scripts
+
+environment: azureml://registries/azureml/environments/sklearn-1.0/versions/18
+
+command: >-
+  python prepare_data.py 
+  --input_data ${{inputs.input_data}}
+  --output_data_x_train ${{outputs.output_data_x_train}}
+  --output_data_x_test ${{outputs.output_data_x_test}}
+  --output_data_y_train ${{outputs.output_data_y_train}}
+  --output_data_y_test ${{outputs.output_data_y_test}}

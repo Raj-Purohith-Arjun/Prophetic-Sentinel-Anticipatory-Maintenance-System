@@ -1,0 +1,8 @@
+numpy
+mlflow
+pandas
+scikit-learn
+pandas
+urllib3
+
+azureml-pipeline

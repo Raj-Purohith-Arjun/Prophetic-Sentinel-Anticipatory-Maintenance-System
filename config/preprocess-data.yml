@@ -1,0 +1,22 @@
+$schema: https://azuremlschemas.azureedge.net/latest/commandComponent.schema.json
+name : preprocess_data
+display_name: Preprocess Data
+description: Preprocess Data 
+version: 1.0.0
+type: command
+inputs: 
+  input_data:
+    type: uri_folder
+outputs:
+  output_data:
+    type: uri_folder
+
+code: ../scripts
+
+environment: azureml://registries/azureml/environments/sklearn-1.0/versions/18
+command: >-
+  python preprocess_data.py  
+  --input_data ${{inputs.input_data}}
+  --output_data ${{outputs.output_data}}
+
+  

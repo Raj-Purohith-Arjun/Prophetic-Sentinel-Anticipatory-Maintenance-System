@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/Samia/Documents/Github/PredictiveMaintenance/azure-ml-pipeline/mlruns/0/14c5524b07f04360b32fc99b56182155/artifacts
+end_time: 1699997457127
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 14c5524b07f04360b32fc99b56182155
+run_name: bold-crab-201
+run_uuid: 14c5524b07f04360b32fc99b56182155
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1699997457079
+status: 3
+tags: []
+user_id: Samia

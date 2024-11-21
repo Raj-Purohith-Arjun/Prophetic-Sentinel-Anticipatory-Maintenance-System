@@ -1,0 +1,54 @@
+$schema: https://azuremlschemas.azureedge.net/latest/commandComponent.schema.json
+name: train_model
+display_name: Train Model
+version: 1
+type: command
+
+inputs:
+  x_train: 
+    type: uri_folder
+  x_test: 
+    type: uri_folder
+  y_train: 
+    type: uri_folder
+  y_test:
+    type: uri_folder
+  n_estimators: 
+    type: integer
+  max_depth:
+    type: integer
+  min_samples_leaf:
+    type: integer
+  max_leaf_nodes:
+    type: integer
+  bootstrap:
+    type: boolean
+  oob_score:
+    type: boolean
+  random_state:
+    type: integer
+    
+outputs:
+  model_output:
+    type: mlflow_model
+  evaluation_report:
+    type: uri_folder
+ 
+code: ../scripts
+environment: azureml://registries/azureml/environments/sklearn-1.0/versions/18
+command: >-
+  python train_model.py 
+  --x_train ${{inputs.x_train}}
+  --x_test ${{inputs.x_test}}
+  --y_train ${{inputs.y_train}}
+  --y_test ${{inputs.y_test}}
+  --n_estimators ${{inputs.n_estimators}}
+  --max_depth ${{inputs.max_depth}}
+  --min_samples_leaf ${{inputs.min_samples_leaf}}
+  --max_leaf_nodes ${{inputs.max_leaf_nodes}}
+  --bootstrap ${{inputs.bootstrap}}
+  --oob_score ${{inputs.oob_score}}
+  --random_state ${{inputs.random_state}}
+  --model_output ${{outputs.model_output}}
+  --evaluation_report ${{outputs.evaluation_report}}
+  

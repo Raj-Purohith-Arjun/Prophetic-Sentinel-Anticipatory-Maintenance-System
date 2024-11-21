@@ -1,0 +1,26 @@
+name: sklearn-env
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10.0
+  - pip
+  - pip:
+    - numpy
+    - scikit-learn
+    - scipy
+    - pandas
+    - inference-schema[numpy-support]
+    - xlrd
+    - mlflow
+    - azureml-mlflow
+    - azureml-defaults
+    - azureml-core
+    - azureml-telemetry
+    - requests
+    
+    - azureml-mlflow
+    - datasets
+    - jobtools
+    - cloudpickle==1.6.0
+    - dask==2.30.0
+    - scikit-learn==

@@ -9,7 +9,7 @@ Machine failures can result in significant downtime and high maintenance costs. 
 - Reduce maintenance costs.
 - Optimize operational efficiency by making informed decisions on production planning and resource allocation.
 
-Explore **local training, evaluation, and exploratory data analysis** in this repository, with notebooks and results available here: [EDA and Training Repo](https://github.com/Hypatchia/MachineFailure-Scikitlearn-Mlflow).
+
 
 ---
 

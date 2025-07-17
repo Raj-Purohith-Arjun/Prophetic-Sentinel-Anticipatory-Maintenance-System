@@ -71,7 +71,7 @@ The predictive model is based on **Random Forests** implemented using **scikit-l
 ## Local Setup
 1. Clone the repository:
    ```bash
-   git clone https://github.com/Hypatchia/MachineFailure-Scikitlearn-Mlflow.git
+   git clone https://Raj-Purohith-Arjun/Prophetic-Sentinel-Anticipatory-Maintenance-System.git
    cd MachineFailure-Scikitlearn-Mlflow
    ```
 

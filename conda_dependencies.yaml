@@ -9,6 +9,7 @@ dependencies:
     - scikit-learn
     - scipy
     - pandas
+    - matplotlib
     - inference-schema[numpy-support]
     - xlrd
     - mlflow
@@ -17,10 +18,7 @@ dependencies:
     - azureml-core
     - azureml-telemetry
     - requests
-    
-    - azureml-mlflow
     - datasets
     - jobtools
-    - cloudpickle==1.6.0
-    - dask==2.30.0
-    - scikit-learn==
+    - cloudpickle
+    - dask

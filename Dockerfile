@@ -1,13 +1,12 @@
-# Use an official Python runtime as a parent image
-FROM python:3.10.0
-# Set the working directory to /app
+# Use the official Azure ML base image
+FROM mcr.microsoft.com/azureml/openmpi4.1.0-ubuntu20.04
+
+# Set the working directory
 WORKDIR /workspace
 ENV HOME=/workspace
-# Copy the current directory contents into the container at /app
+
+# Copy the current directory contents into the container
 COPY . /workspace
-
-
-FROM mcr.microsoft.com/azureml/openmpi4.1.0-ubuntu20.04
 
 # Create conda environment
 COPY conda_dependencies.yaml .

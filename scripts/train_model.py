@@ -20,9 +20,8 @@ def main(args):
     x_train_file_list=[]
     for filename in os.listdir(args.x_train):
         print("Reading file: %s ..." % filename)
-        with open(os.path.join(args.x_train, filename), "r") as f:
-            input_df=pd.read_csv((Path(args.x_train) / filename))
-            x_train_file_list.append(input_df)
+        input_df=pd.read_csv((Path(args.x_train) / filename))
+        x_train_file_list.append(input_df)
 
     # Concatenate the list of Python DataFrames
     x_train_df =pd.concat(x_train_file_list)
@@ -37,9 +36,8 @@ def main(args):
     x_test_file_list=[]
     for filename in os.listdir(args.x_test):
         print("Reading file: %s ..." % filename)
-        with open(os.path.join(args.x_test, filename), "r") as f:
-            input_df=pd.read_csv((Path(args.x_test) / filename))
-            x_test_file_list.append(input_df)
+        input_df=pd.read_csv((Path(args.x_test) / filename))
+        x_test_file_list.append(input_df)
 
     # Concatenate the list of Python DataFrames
     x_test_df =pd.concat(x_test_file_list)
@@ -52,12 +50,11 @@ def main(args):
     y_train_file_list=[]
     for filename in os.listdir(args.y_train):
         print("Reading file: %s ..." % filename)
-        with open(os.path.join(args.y_train, filename), "r") as f:
-            input_df=pd.read_csv((Path(args.y_train) / filename))
-            y_train_file_list.append(input_df)
+        input_df=pd.read_csv((Path(args.y_train) / filename))
+        y_train_file_list.append(input_df)
 
     # Concatenate the list of Python DataFrames
-    y_train_df =pd.concat(y_train_file_list)
+    y_train_df =pd.concat(y_train_file_list).squeeze()
 
 
 
@@ -67,12 +64,11 @@ def main(args):
     y_test_file_list=[]
     for filename in os.listdir(args.y_test):
         print("Reading file: %s ..." % filename)
-        with open(os.path.join(args.y_test, filename), "r") as f:
-            input_df=pd.read_csv((Path(args.y_test) / filename))
-            y_test_file_list.append(input_df)
+        input_df=pd.read_csv((Path(args.y_test) / filename))
+        y_test_file_list.append(input_df)
 
     # Concatenate the list of Python DataFrames
-    y_test_df =pd.concat(y_test_file_list)
+    y_test_df =pd.concat(y_test_file_list).squeeze()
 
 
      # train model
@@ -93,7 +89,7 @@ def main(args):
     print('Saving model...')
     mlflow.sklearn.save_model(model, args.model_output)
     
-    print('Saving evauation results...')
+    print('Saving evaluation results...')
     with open(Path(args.evaluation_report) / 'results.json', 'w') as fp:
         json.dump(results, fp)
     

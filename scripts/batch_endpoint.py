@@ -13,18 +13,12 @@ def init():
     global model
     global device
     model_name = "FailurePredictionModel"
-    model_path = os.path.join(os.getenv("AZUREML_MODEL_DIR"), "model")
-    model_path = Model.get_model_path(model_name=model_name, _workspace=ws,version=3)
-    model = mlflow.pyfunc.load_model(model_path,run_id=run.id)
-    print('Loading model...')
     run = Run.get_context()
     ws = run.experiment.workspace
-   
+    print('Loading model...')
+    model_path = Model.get_model_path(model_name=model_name, _workspace=ws, version=3)
+    model = mlflow.pyfunc.load_model(model_path)
     print('Getting Model Path')
-    #model = Model(ws, model_name)
-    
-    # Load the model, it's input types and output names
-    #model = mlflow.sklearn.load_model(model_path, run_id=run.id)
 
 
 
@@ -46,7 +40,7 @@ def run(mini_batch):
     print('Making predictions...')
     pred = model.predict(data)
     pred = pd.DataFrame(pred, columns=['Machine Failure Prediction'])
-    return data.assign(PaymentIsOutstanding=pred['Machine Failure Prediction'])
+    return data.assign(MachineFailed=pred['Machine Failure Prediction'])
    
 
 

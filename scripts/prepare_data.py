@@ -2,14 +2,8 @@ import argparse
 from pathlib import Path
 import os
 import pandas as pd
-import pickle
-import mlflow
-import mlflow.sklearn
-import sys
-import timeit
 import numpy as np
 from sklearn.preprocessing import LabelEncoder, StandardScaler
-import pandas as pd
 from sklearn.model_selection import train_test_split
 
 # Ensure callers send all required parameters
@@ -28,12 +22,11 @@ print('Preparing data...')
 
 # State the input and output data directories for print
 lines = [
-
-f"input_data: {args.input_data}",
-f"output_data_x_train: {args.output_data_x_train}"
-f"output_data_x_test: {args.output_data_x_train}"
-f"output_data_y_train: {args.output_data_y_train}"
-f"output_data_y_test: {args.output_data_y_test}"
+    f"input_data: {args.input_data}",
+    f"output_data_x_train: {args.output_data_x_train}",
+    f"output_data_x_test: {args.output_data_x_test}",
+    f"output_data_y_train: {args.output_data_y_train}",
+    f"output_data_y_test: {args.output_data_y_test}",
 ]
 for line in lines:
     print(line)
@@ -79,7 +72,7 @@ def prepare_data(data):
     ]
     
     # Standard Scaler for feature scaling numerical data only
-    Scaler = StandardScaler((-1,1))
+    Scaler = StandardScaler()
     X_train_df[Numerical_features] = Scaler.fit_transform(X_train_df[Numerical_features])
     X_test_df[Numerical_features] = Scaler.transform(X_test_df[Numerical_features])
     

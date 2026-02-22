@@ -2,7 +2,7 @@ numpy
 mlflow
 pandas
 scikit-learn
-pandas
+matplotlib
 urllib3
 
 azureml-pipeline

@@ -3,15 +3,9 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 import os
-import matplotlib.pyplot as plt
 import mlflow
 import mlflow.sklearn
-from sklearn.preprocessing import LabelEncoder, StandardScaler
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import confusion_matrix, accuracy_score, classification_report
-from sklearn.metrics import roc_curve, auc, roc_auc_score
-from sklearn.metrics import precision_recall_curve, average_precision_score
-from sklearn.metrics import f1_score, precision_score, recall_score
+from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score, roc_auc_score
 import logging
 
 def get_file(f):
@@ -67,19 +61,21 @@ def score(input_data, input_model):
   
     print("Model Scored Successfully")
 
-    mlflow.sklearn.log_model(model, "rf_model")
-
     pred_df = pd.DataFrame(y_pred, columns=['Failure'])
 
  
-    print('Preprocessing Done')
+    print('Scoring Done')
 
     
     return data_test.assign(Failure=pred_df['Failure'])
 
 def main(args):
-    score(args.input_data, args.input_model)
- 
+    scored_df = score(args.input_data, args.input_model)
+
+    os.makedirs(args.output_data, exist_ok=True)
+    output_path = os.path.join(args.output_data, "predictions.csv")
+    scored_df.to_csv(output_path, index=False)
+    print(f"Predictions saved to {output_path}")
 
     
 
